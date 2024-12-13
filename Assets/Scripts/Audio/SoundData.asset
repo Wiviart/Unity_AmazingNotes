@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a60119c2fb52d4499dbcc9ae6e51a1, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier: 
+  backgroundClips:
+  - {fileID: 8300000, guid: 75d982b116c42854197713e407373f90, type: 3}
+  - {fileID: 8300000, guid: afd77a2bf5d528a4188570f88869f5fd, type: 3}
+  - {fileID: 8300000, guid: 17418e0263d437d4382c5d63ebfe3b20, type: 3}
+  - {fileID: 8300000, guid: f9ba7085ea7ac9a4a90da1f562b3836d, type: 3}
+  - {fileID: 8300000, guid: 8252dcded45662c42bdc6541a99d5591, type: 3}
