@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
             if (timer > duration * 0.95f) break;
 
             var type = GetNoteAlongDuration();
+            print(type);
             var randomTile = timer > duration * 0.1f;
 
             spawner.SpawnRandom(type, amount, randomTile, speed);
@@ -67,21 +68,22 @@ public class GameManager : MonoBehaviour
     private NoteType GetNoteAlongDuration()
     {
         if (timer > duration * 0.8f)
-            return NoteValue.GetRamdomNoteType(0, 20, 30, 15, 5, 5);
+            return NoteValue.GetRandomNoteType(15, 0, 20, 30, 15, 5, 5);
         if (timer > duration * 0.7f)
-            return NoteValue.GetRamdomNoteType(0, 30, 25, 10, 5, 0);
+            return NoteValue.GetRandomNoteType(20, 0, 30, 25, 10, 5, 0);
         if (timer > duration * 0.6f)
-            return NoteValue.GetRamdomNoteType(5, 40, 20, 10, 0, 0);
+            return NoteValue.GetRandomNoteType(20, 5, 40, 20, 10, 0, 0);
         if (timer > duration * 0.5f)
-            return NoteValue.GetRamdomNoteType(10, 50, 20, 5, 0, 0);
+            return NoteValue.GetRandomNoteType(25, 10, 50, 20, 5, 0, 0);
         if (timer > duration * 0.4f)
-            return NoteValue.GetRamdomNoteType(15, 40, 15, 5, 0, 0);
+            return NoteValue.GetRandomNoteType(25, 15, 40, 15, 5, 0, 0);
         if (timer > duration * 0.3f)
-            return NoteValue.GetRamdomNoteType(20, 30, 15, 0, 0, 0);
+            return NoteValue.GetRandomNoteType(30, 20, 30, 15, 0, 0, 0);
         if (timer > duration * 0.2f)
-            return NoteValue.GetRamdomNoteType(25, 20, 10, 0, 0, 0);
+            return NoteValue.GetRandomNoteType(30, 25, 20, 10, 0, 0, 0);
         if (timer > duration * 0.1f)
-            return NoteValue.GetRamdomNoteType(30, 10, 0, 0, 0, 0);
-        return NoteValue.GetRamdomNoteType(0, 0, 0, 0, 0, 0);
+            return NoteValue.GetRandomNoteType(35, 30, 10, 0, 0, 0, 0);
+        else
+            return NoteValue.GetRandomNoteType(20, 0, 0, 0, 0, 0, 0);
     }
 }

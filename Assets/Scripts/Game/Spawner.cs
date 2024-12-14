@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn(NoteType type, int bpm, bool random, float speed)
     {
-        if (!canSpawn) return;
+        if (!canSpawn || type == NoteType.Rest) return;
 
         var prefab = PrefabByType(type, random);
         var obj = Instantiate(prefab, transform);

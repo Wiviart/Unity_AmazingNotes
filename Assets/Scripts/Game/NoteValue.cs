@@ -17,18 +17,19 @@ public class NoteValue
         };
     }
 
-    public static NoteType GetRamdomNoteType(int half, int quarter, int eighth, int sixteenth, int thirtySecond,
-        int sixtyFourth)
+    public static NoteType GetRandomNoteType(
+        int whole, int half, int quarter, int eighth, int sixteenth, int thirtySecond, int sixtyFourth)
     {
         var random = Random.Range(0, 100);
-        if (random <= 5) return NoteType.Rest;
-        if (random <= 5 + half) return NoteType.Half;
-        if (random <= 5 + half + quarter) return NoteType.Quarter;
-        if (random <= 5 + half + quarter + eighth) return NoteType.Eighth;
-        if (random <= 5 + half + quarter + eighth + sixteenth) return NoteType.Sixteenth;
-        if (random <= 5 + half + quarter + eighth + sixteenth + thirtySecond) return NoteType.ThirtySecond;
-        if (random <= 5 + half + quarter + eighth + sixteenth + thirtySecond + sixtyFourth) return NoteType.SixtyFourth;
-        return NoteType.Whole;
+        if (random <= whole) return NoteType.Whole;
+        if (random <= whole + half) return NoteType.Half;
+        if (random <= whole + half + quarter) return NoteType.Quarter;
+        if (random <= whole + half + quarter + eighth) return NoteType.Eighth;
+        if (random <= whole + half + quarter + eighth + sixteenth) return NoteType.Sixteenth;
+        if (random <= whole + half + quarter + eighth + sixteenth + thirtySecond) return NoteType.ThirtySecond;
+        if (random <= whole + half + quarter + eighth + sixteenth + thirtySecond + sixtyFourth)
+            return NoteType.SixtyFourth;
+        return NoteType.Rest;
     }
 }
 

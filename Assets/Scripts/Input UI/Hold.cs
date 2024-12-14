@@ -8,6 +8,7 @@ public class Hold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector3 pointerPosition;
     private bool isHold = false;
     private bool AtEndPoint => pointer.position.y >= endPoint.position.y;
+    int score = 0;
 
     private void Update()
     {
@@ -22,6 +23,22 @@ public class Hold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         print("Hold");
         isHold = true;
         pointerPosition = pointer.position;
+
+        switch (transform.position.y)
+        {
+            case > -4.25f and <= -3.75f:
+                print("Perfect");
+                score = 3;
+                break;
+            case > -3.75f and <= -3.25f:
+                print("Great");
+                score = 2;
+                break;
+            default:
+                print("Good");
+                score = 1;
+                break;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -33,8 +50,8 @@ public class Hold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void DestroyAndAddScore()
     {
         isHold = false;
-        var score = AtEndPoint ? 3 : 2;
-        Observer.OnClickTrigger(score);
+        var multiplier = AtEndPoint ? 2 : 1;
+        Observer.OnClickTrigger(score * multiplier);
         Destroy(transform.parent.gameObject);
     }
 
