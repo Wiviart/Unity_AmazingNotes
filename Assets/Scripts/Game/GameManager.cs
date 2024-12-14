@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpawnerManager spawner;
     [SerializeField] private TextUI scoreUI, comboUI;
     [SerializeField] private Slider slider;
-    private Score score;
+    private static Score score;
 
     private int amount = GameData.StartAmount;
     private float speed = GameData.StartSpeed;
@@ -85,5 +85,10 @@ public class GameManager : MonoBehaviour
             return NoteValue.GetRandomNoteType(35, 30, 10, 0, 0, 0, 0);
         else
             return NoteValue.GetRandomNoteType(35, 0, 0, 0, 0, 0, 0);
+    }
+    
+    public static void ResetCombo()
+    {
+        score.ResetCombo();
     }
 }

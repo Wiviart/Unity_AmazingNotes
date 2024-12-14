@@ -38,7 +38,7 @@ public class Score
         comboUI.ShowText("x" + combo);
     }
 
-    private void ResetCombo()
+    public void ResetCombo()
     {
         combo = 0;
     }

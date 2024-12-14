@@ -15,6 +15,7 @@ public class Note : MonoBehaviour
         
         if (transform.position.y < -20)
         {
+            GameManager.ResetCombo();
             Destroy(gameObject);
         }
     }
