@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7413252607631360849}
+  - component: {fileID: 2364023203019163128}
   m_Layer: 0
   m_Name: Tile Quarter
   m_TagString: Untagged
@@ -38,6 +39,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 265, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2364023203019163128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716460000824005700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713389d3d6814fd4a64a834e80f5cc80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4148020602798249828
 GameObject:
   m_ObjectHideFlags: 0
@@ -51,7 +64,7 @@ GameObject:
   - component: {fileID: 6506710637485145344}
   - component: {fileID: 1951570193169274763}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Click
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,6 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1eed62eea0d29c4fb825562eca568ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  squareEffect: {fileID: 5916195330856544734, guid: 5494ce9f825d48b4fbead622841cace6, type: 3}
+  starEffect: {fileID: 1825862113166347041, guid: 1ef45f59b86c9474a80cf217cd17f9f0, type: 3}
+  anim: {fileID: 5097273053853505497}
+  note: {fileID: 2364023203019163128}
 --- !u!114 &1951570193169274763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +155,9 @@ GameObject:
   - component: {fileID: 2655196078426208902}
   - component: {fileID: 3897019739630469442}
   - component: {fileID: 2476655802051594515}
+  - component: {fileID: 5097273053853505497}
   m_Layer: 0
-  m_Name: Image (1)
+  m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,3 +221,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &5097273053853505497
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567787328845768726}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83402489c7f620f43a32519f7714e7d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
