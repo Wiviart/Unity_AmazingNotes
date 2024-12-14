@@ -84,6 +84,6 @@ public class GameManager : MonoBehaviour
         if (timer > duration * 0.1f)
             return NoteValue.GetRandomNoteType(35, 30, 10, 0, 0, 0, 0);
         else
-            return NoteValue.GetRandomNoteType(20, 0, 0, 0, 0, 0, 0);
+            return NoteValue.GetRandomNoteType(35, 0, 0, 0, 0, 0, 0);
     }
 }
