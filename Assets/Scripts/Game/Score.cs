@@ -1,7 +1,5 @@
 public class Score
 {
-    private const int maxCombo = 7;
-
     private int score = 0;
     private int highScore = 0;
     private int combo = 0;
@@ -16,7 +14,7 @@ public class Score
 
     public void AddScore(int value)
     {
-        if (value > 1) AddCombo();
+        if (value > 2) AddCombo();
         else ResetCombo();
 
         var multiplier = combo == 0 ? 1 : combo;
@@ -34,7 +32,7 @@ public class Score
 
     private void AddCombo()
     {
-        if (combo < maxCombo) combo++;
+        if (combo < GameData.maxCombo) combo++;
         comboUI.ShowText("x" + combo);
     }
 

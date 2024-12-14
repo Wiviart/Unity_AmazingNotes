@@ -1,25 +1,24 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameData data;
-    [SerializeField] private Audio audio;
+    [SerializeField] private Audio _audio;
     [SerializeField] private SpawnerManager spawner;
     [SerializeField] private TextUI scoreUI, comboUI;
     [SerializeField] private Slider slider;
     private static Score score;
 
-    private int amount = GameData.StartAmount;
-    private float speed = GameData.StartSpeed;
-    private float delay = GameData.StartDelay;
-
-    private float timer = 0;
-    private int bpm = 0;
-    private float duration = 0;
+    private int amount = 1;
+    private int bpm;
+    private float speed;
+    private float delay;
+    private float timer;
+    private float duration;
 
     private void Start()
     {
@@ -27,19 +26,19 @@ public class GameManager : MonoBehaviour
         scoreUI.ShowText("00");
         Observer.OnClick += score.AddScore;
 
-        bpm = audio.Init().bpm;
+        bpm = _audio.Init().bpm;
+        duration = _audio.Init().clip.length;
         delay = (float)60 / bpm;
+        speed = data.StartSpeed;
+
         spawner.Init(data, bpm);
-
-        duration = audio.Init().clip.length;
-
         StartCoroutine(SpawnPerBeat());
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
-        slider.value = (timer / duration * 100);
+        slider.value = timer / duration * 100;
 
         if (Input.GetKeyDown(KeyCode.A))
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -56,8 +55,7 @@ public class GameManager : MonoBehaviour
         {
             if (timer > duration * 0.95f) break;
 
-            var type = GetNoteAlongDuration();
-            print(type);
+            var type = NoteValue.GetNoteAlongDuration(timer, duration);
             var randomTile = timer > duration * 0.1f;
 
             spawner.SpawnRandom(type, amount, randomTile, speed);
@@ -65,28 +63,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private NoteType GetNoteAlongDuration()
-    {
-        if (timer > duration * 0.8f)
-            return NoteValue.GetRandomNoteType(15, 0, 20, 30, 15, 5, 5);
-        if (timer > duration * 0.7f)
-            return NoteValue.GetRandomNoteType(20, 0, 30, 25, 10, 5, 0);
-        if (timer > duration * 0.6f)
-            return NoteValue.GetRandomNoteType(20, 5, 40, 20, 10, 0, 0);
-        if (timer > duration * 0.5f)
-            return NoteValue.GetRandomNoteType(25, 10, 50, 20, 5, 0, 0);
-        if (timer > duration * 0.4f)
-            return NoteValue.GetRandomNoteType(25, 15, 40, 15, 5, 0, 0);
-        if (timer > duration * 0.3f)
-            return NoteValue.GetRandomNoteType(30, 20, 30, 15, 0, 0, 0);
-        if (timer > duration * 0.2f)
-            return NoteValue.GetRandomNoteType(30, 25, 20, 10, 0, 0, 0);
-        if (timer > duration * 0.1f)
-            return NoteValue.GetRandomNoteType(35, 30, 10, 0, 0, 0, 0);
-        else
-            return NoteValue.GetRandomNoteType(35, 0, 0, 0, 0, 0, 0);
-    }
-    
+
     public static void ResetCombo()
     {
         score.ResetCombo();

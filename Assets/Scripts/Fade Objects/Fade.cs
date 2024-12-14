@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Fade : MonoBehaviour
 {
     private Image image;
+    [Range(0, 1), SerializeField] protected float originalAlpha = 0.5f;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class Fade : MonoBehaviour
 
     private IEnumerator ChangeAlpha()
     {
-        var alpha = 0.5f;
+        var alpha = originalAlpha;
         var target = 1f;
         var start = 0.5f;
         var duration = 0.5f;

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 7413252607631360849, guid: 4a72c0b7292bd794a81965eba3c5b19a, type: 3}
   tileHoldPrefab: {fileID: 7413252607631360849, guid: 3b5a164518b12544cb816e37765a13c0, type: 3}
+  StartSpeed: 5

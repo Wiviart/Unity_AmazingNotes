@@ -6,7 +6,6 @@ public class GameData : ScriptableObject
     public Transform tilePrefab;
     public Transform tileHoldPrefab;
 
-    public const float StartSpeed = 6;
-    public const float StartDelay = 5f;
-    public const int StartAmount = 1;
+    public const int maxCombo = 7;
+    public float StartSpeed = 6;
 }

@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
 
         var prefab = PrefabByType(type, random);
         var obj = Instantiate(prefab, transform);
-        obj.gameObject.AddComponent<Note>().Init(speed);
+        obj.GetComponent<Note>().Init(speed);
         delayTime = DelayTime(type, bpm);
         canSpawn = false;
     }

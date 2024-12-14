@@ -12,11 +12,14 @@ public class Note : MonoBehaviour
     private void LateUpdate()
     {
         transform.position += Vector3.down * Time.deltaTime * _speed;
-        
-        if (transform.position.y < -20)
-        {
-            GameManager.ResetCombo();
-            Destroy(gameObject);
-        }
+
+        if (!(transform.position.y < -20)) return;
+        GameManager.ResetCombo();
+        Destroy(gameObject);
+    }
+
+    public void Stop()
+    {
+        _speed /= 2;
     }
 }
