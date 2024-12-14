@@ -8,11 +8,11 @@ public class ScoreChecker
 
         switch (transform.position.y)
         {
-            case > -4.25f and <= -3.75f:
+            case > -4f and <= -3.7f:
                 Debug.Log("Perfect");
                 score = 3;
                 break;
-            case > -3.75f and <= -3.25f:
+            case > -3.7f and <= -3.4f:
                 Debug.Log("Great");
                 score = 2;
                 break;

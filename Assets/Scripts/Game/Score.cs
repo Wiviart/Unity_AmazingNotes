@@ -32,7 +32,7 @@ public class Score
 
     private void AddCombo()
     {
-        if (combo < GameData.maxCombo) combo++;
+        if (combo < ConstTag.MaxCombo) combo++;
         comboUI.ShowText("x" + combo);
     }
 

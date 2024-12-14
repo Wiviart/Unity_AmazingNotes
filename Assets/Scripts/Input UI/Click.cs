@@ -7,9 +7,9 @@ public class Click : MonoBehaviour, IPointerDownHandler
     [SerializeField] private ParticleSystem squareEffect;
     [SerializeField] private ParticleSystem starEffect;
     [SerializeField] private Animator anim;
-    private const string DESTROY = "Destroy";
     [SerializeField] private Note note;
-    bool isClicked = false;
+
+    private bool isClicked = false;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -22,6 +22,7 @@ public class Click : MonoBehaviour, IPointerDownHandler
         if (score == 3) SpawnEffect(starEffect);
         Observer.OnClickTrigger(score);
 
+        SpawnEffect(squareEffect, transform);
         StartCoroutine(PlayAnimationAndDestroy());
     }
 
@@ -35,10 +36,8 @@ public class Click : MonoBehaviour, IPointerDownHandler
 
     private IEnumerator PlayAnimationAndDestroy()
     {
-        SpawnEffect(squareEffect, transform);
-
         var animHandler = new AnimatorHandler(anim);
-        animHandler.PlayAnimation(DESTROY);
+        animHandler.PlayAnimation(ConstTag.DESTROY);
         yield return new WaitForSeconds(1);
 
         Destroy(transform.parent.gameObject);
