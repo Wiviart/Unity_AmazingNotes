@@ -11,9 +11,12 @@ public class Audio : MonoBehaviour
         _source = GetComponent<AudioSource>();
     }
 
-    private void Start()
+    public ClipData Init()
     {
-        _source.clip = data.backgroundClips[Random.Range(0, data.backgroundClips.Count)];
+        int random = Random.Range(0, data.backgroundClips.Count);
+        _source.clip = data.backgroundClips[random].clip;
         _source.Play();
+
+        return data.backgroundClips[random];
     }
 }

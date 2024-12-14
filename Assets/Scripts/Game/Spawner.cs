@@ -1,35 +1,56 @@
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Transform[] spawnPoints;
-    private List<Transform> _spawned = new List<Transform>();
-    GameData data;
+    private GameData data;
+    private float delayTime;
+    private bool canSpawn = true;
 
     public void Init(GameData data)
     {
         this.data = data;
     }
 
-    public void SpawnRandom(int amount, float speed)
+    private void Update()
     {
-        var points = new List<Transform>(spawnPoints);
+        if (canSpawn) return;
+        delayTime -= Time.deltaTime;
 
-        while (points.Count > amount)
-        {
-            var index = Random.Range(0, points.Count);
-            points.RemoveAt(index);
-        }
+        if (delayTime <= 0)
+            canSpawn = true;
+    }
 
-        for (int i = 0; i < amount; i++)
-        {
-            var spawnPoint = points[i];
-            var obj = Instantiate(data.tilePrefab, spawnPoint);
-            obj.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
-            obj.gameObject.AddComponent<Tile>().Init(speed);
-            _spawned.Add(obj);
-        }
+    public void Spawn(NoteType type, int bpm, bool random, float speed)
+    {
+        if (!canSpawn) return;
+
+        var prefab = PrefabByType(type, random);
+        var obj = Instantiate(prefab, transform);
+        obj.gameObject.AddComponent<Note>().Init(speed);
+        delayTime = DelayTime(type, bpm);
+        canSpawn = false;
+    }
+
+
+    private float DelayTime(NoteType type, int bpm)
+    {
+        var value = NoteValue.Value(type);
+        var min = NoteValue.Value(NoteType.Quarter);
+        value = Mathf.Max(value, min);
+        var duration = value * 60 / bpm;
+
+        return duration;
+    }
+
+    private Transform PrefabByType(NoteType type, bool random = true)
+    {
+        if (type != NoteType.Whole)
+            return data.tilePrefab;
+
+        if (!random) return data.tilePrefab;
+
+        var index = Random.Range(0, 2);
+        return index == 0 ? data.tilePrefab : data.tileHoldPrefab;
     }
 }

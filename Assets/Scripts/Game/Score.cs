@@ -24,7 +24,7 @@ public class Score
 
         if (score > highScore) highScore = score;
 
-        scoreUI.ShowText(score.ToString());
+        scoreUI.ShowText(score.ToString("00"));
     }
 
     public void ResetScore()
