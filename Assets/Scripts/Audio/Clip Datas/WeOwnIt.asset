@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WeOwnIt
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 75d982b116c42854197713e407373f90, type: 3}
-  bpm: 172
+  beatsPerMinute: 172

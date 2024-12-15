@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UpTownFunk
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: afd77a2bf5d528a4188570f88869f5fd, type: 3}
-  bpm: 115
+  beatsPerMinute: 115

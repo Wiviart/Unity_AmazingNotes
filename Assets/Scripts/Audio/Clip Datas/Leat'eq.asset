@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Leat'eq
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 8252dcded45662c42bdc6541a99d5591, type: 3}
-  bpm: 102
+  beatsPerMinute: 102
