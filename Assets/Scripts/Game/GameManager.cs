@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameData data;
     [SerializeField] private Audio _audio;
     [SerializeField] private SpawnerManager spawner;
-    [SerializeField] private TextUI scoreUI, comboUI;
+    [SerializeField] private UI_Text scoreUI, comboUI;
     [SerializeField] private Slider slider;
     private static Score score;
 
@@ -35,13 +35,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnPerBeat());
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         timer += Time.deltaTime;
         slider.value = timer / duration * 100;
-
-        if (Input.GetKeyDown(KeyCode.A))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnDisable()

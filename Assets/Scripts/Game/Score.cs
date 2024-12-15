@@ -4,9 +4,9 @@ public class Score
     private int highScore = 0;
     private int combo = 0;
 
-    private TextUI scoreUI, comboUI;
+    private UI_Text scoreUI, comboUI;
 
-    public Score(TextUI scoreUI, TextUI comboUI)
+    public Score(UI_Text scoreUI, UI_Text comboUI)
     {
         this.scoreUI = scoreUI;
         this.comboUI = comboUI;

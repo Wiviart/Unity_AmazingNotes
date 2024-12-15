@@ -3,7 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class TextUI : MonoBehaviour
+public class UI_Text : MonoBehaviour
 {
     private TextMeshProUGUI text;
     [SerializeField] private float showTime;
@@ -24,7 +24,7 @@ public class TextUI : MonoBehaviour
         StartCoroutine(ShowTextCoroutine(value));
     }
 
-    IEnumerator ShowTextCoroutine(string value)
+    private IEnumerator ShowTextCoroutine(string value)
     {
         text.text = value;
         yield return new WaitForSeconds(showTime);

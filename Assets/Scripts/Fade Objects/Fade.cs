@@ -27,8 +27,8 @@ public class Fade : MonoBehaviour
     private IEnumerator ChangeAlpha()
     {
         var alpha = originalAlpha;
+        var start = originalAlpha;
         var target = 1f;
-        var start = 0.5f;
         var duration = 0.5f;
         var time = 0f;
 

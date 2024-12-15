@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Note : MonoBehaviour
@@ -9,13 +10,16 @@ public class Note : MonoBehaviour
         _speed = speed;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        transform.position += Vector3.down * Time.deltaTime * _speed;
-
         if (!(transform.position.y < -20)) return;
         GameManager.ResetCombo();
         Destroy(gameObject);
+    }
+
+    private void LateUpdate()
+    {
+        transform.position += Vector3.down * Time.deltaTime * _speed;
     }
 
     public void Stop()

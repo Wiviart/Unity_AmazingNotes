@@ -37,7 +37,7 @@ public class Click : MonoBehaviour, IPointerDownHandler
     private IEnumerator PlayAnimationAndDestroy()
     {
         var animHandler = new AnimatorHandler(anim);
-        animHandler.PlayAnimation(ConstTag.DESTROY);
+        animHandler.PlayAnimation(ConstTag.DestroyClip);
         yield return new WaitForSeconds(1);
 
         Destroy(transform.parent.gameObject);
