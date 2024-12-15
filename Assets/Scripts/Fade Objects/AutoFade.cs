@@ -1,7 +1,10 @@
-public class AutoFade : Fade
+namespace AmazingNotes.Objects
 {
-    private void Start()
+    public class AutoFade : Fade
     {
-        InvokeRepeating(nameof(ChangeAlphaCoroutine), 0, 1f);
+        private void Start()
+        {
+            InvokeRepeating(nameof(ChangeAlphaCoroutine), 0, 1f);
+        }
     }
 }

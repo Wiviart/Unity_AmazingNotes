@@ -1,32 +1,34 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class UI_Text : MonoBehaviour
+namespace AmazingNotes.UI
 {
-    protected TextMeshProUGUI text;
-
-    private void Awake()
+    public class UI_Text : MonoBehaviour
     {
-        text = GetComponent<TextMeshProUGUI>();
-    }
+        protected TextMeshProUGUI text;
 
-    private void Start()
-    {
-        text.text = "";
-    }
+        private void Awake()
+        {
+            text = GetComponent<TextMeshProUGUI>();
+        }
 
-    public void ShowText(string value, float time)
-    {
-        StopAllCoroutines();
-        StartCoroutine(ShowTextCoroutine(value, time));
-    }
+        private void Start()
+        {
+            text.text = "";
+        }
 
-    protected IEnumerator ShowTextCoroutine(string value, float time)
-    {
-        text.text = value;
-        yield return new WaitForSeconds(time);
-        if (time != 0) text.text = "";
+        public void ShowText(string value, float time)
+        {
+            StopAllCoroutines();
+            StartCoroutine(ShowTextCoroutine(value, time));
+        }
+
+        private IEnumerator ShowTextCoroutine(string value, float time)
+        {
+            text.text = value;
+            yield return new WaitForSeconds(time);
+            if (time != 0) text.text = "";
+        }
     }
 }

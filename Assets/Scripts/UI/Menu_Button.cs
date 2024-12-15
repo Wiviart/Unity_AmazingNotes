@@ -1,9 +1,13 @@
+using AmazingNotes.Game;
 using UnityEngine.SceneManagement;
 
-public class Menu_Button : UI_Button
+namespace AmazingNotes.UI
 {
-    protected override void OnClick()
+    public class Menu_Button : UI_Button
     {
-        SceneManager.LoadSceneAsync(ConstTag.MenuScene);
+        protected override void OnClick()
+        {
+            SceneManager.LoadSceneAsync(ConstTag.MenuScene);
+        }
     }
 }

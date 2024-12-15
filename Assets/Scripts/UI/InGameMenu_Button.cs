@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class InGameMenu_Button : UI_Button
+namespace AmazingNotes.UI
 {
-    [SerializeField] private GameObject inGameMenu;
-
-    protected override void OnClick()
+    public class InGameMenu_Button : UI_Button
     {
-        inGameMenu.SetActive(!inGameMenu.activeSelf);
+        [SerializeField] private GameObject inGameMenu;
+
+        protected override void OnClick()
+        {
+            inGameMenu.SetActive(!inGameMenu.activeSelf);
+        }
     }
 }

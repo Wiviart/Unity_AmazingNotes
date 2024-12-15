@@ -1,22 +1,25 @@
 using UnityEngine;
 
-public class Audio : MonoBehaviour
+namespace AmazingNotes.Audios
 {
-    [SerializeField] private SoundData data;
-
-    private AudioSource _source;
-
-    private void Awake()
+    public class Audio : MonoBehaviour
     {
-        _source = GetComponent<AudioSource>();
-    }
+        [SerializeField] private SoundData data;
 
-    public ClipData Init()
-    {
-        int random = Random.Range(0, data.backgroundClips.Count);
-        _source.clip = data.backgroundClips[random].clip;
-        _source.Play();
+        private AudioSource _source;
 
-        return data.backgroundClips[random];
+        private void Awake()
+        {
+            _source = GetComponent<AudioSource>();
+        }
+
+        public ClipData Init()
+        {
+            int random = Random.Range(0, data.backgroundClips.Count);
+            _source.clip = data.backgroundClips[random].clip;
+            _source.Play();
+
+            return data.backgroundClips[random];
+        }
     }
 }

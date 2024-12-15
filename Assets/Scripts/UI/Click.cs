@@ -1,45 +1,51 @@
 using System.Collections;
+using AmazingNotes.Game;
+using AmazingNotes.Notes;
+using AmazingNotes.Scores;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Click : MonoBehaviour, IPointerDownHandler
+namespace AmazingNotes.UI
 {
-    [SerializeField] private ParticleSystem squareEffect;
-    [SerializeField] private ParticleSystem starEffect;
-    [SerializeField] private Animator anim;
-    [SerializeField] private Note note;
-
-    private bool isClicked = false;
-
-    public void OnPointerDown(PointerEventData eventData)
+    public class Click : MonoBehaviour, IPointerDownHandler
     {
-        if (isClicked) return;
-        isClicked = true;
+        [SerializeField] private ParticleSystem squareEffect;
+        [SerializeField] private ParticleSystem starEffect;
+        [SerializeField] private Animator anim;
+        [SerializeField] private Note note;
 
-        note.Stop();
+        private bool isClicked = false;
 
-        int score = ScoreChecker.ScoreByPosition(transform);
-        if (score == 3) SpawnEffect(starEffect);
-        Observer.OnClickTrigger(score);
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (isClicked) return;
+            isClicked = true;
 
-        SpawnEffect(squareEffect, transform);
-        StartCoroutine(PlayAnimationAndDestroy());
-    }
+            note.Stop();
 
-    private void SpawnEffect(ParticleSystem effect, Transform parent = null)
-    {
-        var pos = transform.position;
-        pos.z = 10;
-        var vfx = Instantiate(effect, pos, Quaternion.identity, parent);
-        vfx.Play();
-    }
+            int score = ScoreChecker.ScoreByPosition(transform);
+            if (score == 3) SpawnEffect(starEffect);
+            Observer.OnClickTrigger(score);
 
-    private IEnumerator PlayAnimationAndDestroy()
-    {
-        var animHandler = new AnimatorHandler(anim);
-        animHandler.PlayAnimation(ConstTag.DestroyClip);
-        yield return new WaitForSeconds(1);
+            SpawnEffect(squareEffect, transform);
+            StartCoroutine(PlayAnimationAndDestroy());
+        }
 
-        Destroy(transform.parent.gameObject);
+        private void SpawnEffect(ParticleSystem effect, Transform parent = null)
+        {
+            var pos = transform.position;
+            pos.z = 10;
+            var vfx = Instantiate(effect, pos, Quaternion.identity, parent);
+            vfx.Play();
+        }
+
+        private IEnumerator PlayAnimationAndDestroy()
+        {
+            var animHandler = new AnimatorHandler(anim);
+            animHandler.PlayAnimation(ConstTag.DestroyClip);
+            yield return new WaitForSeconds(1);
+
+            Destroy(transform.parent.gameObject);
+        }
     }
 }

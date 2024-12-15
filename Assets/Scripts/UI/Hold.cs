@@ -1,63 +1,67 @@
+using AmazingNotes.Game;
+using AmazingNotes.Scores;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class Hold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+namespace AmazingNotes.UI
 {
-    [SerializeField] private Transform pointer;
-    [SerializeField] private Transform endPoint;
-    [SerializeField] private ParticleSystem starEffect;
-    [SerializeField] private TrailRenderer trail;
-
-    private Vector3 pointerPosition;
-    private bool isHold = false;
-    private bool AtEndPoint => pointer.position.y >= endPoint.position.y;
-    private int score = 0;
-
-    private void Update()
+    public class Hold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        if (!isHold) return;
-        MovePointer();
+        [SerializeField] private Transform pointer;
+        [SerializeField] private Transform endPoint;
+        [SerializeField] private ParticleSystem starEffect;
+        [SerializeField] private TrailRenderer trail;
 
-        if (AtEndPoint) DestroyAndAddScore();
-    }
+        private Vector3 pointerPosition;
+        private bool isHold = false;
+        private bool AtEndPoint => pointer.position.y >= endPoint.position.y;
+        private int score = 0;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        print("Hold");
-        isHold = true;
-        pointerPosition = pointer.position;
-        pointer.gameObject.SetActive(true);
-        trail.gameObject.SetActive(true);
+        private void Update()
+        {
+            if (!isHold) return;
+            MovePointer();
 
-        score = ScoreChecker.ScoreByPosition(transform);
-    }
+            if (AtEndPoint) DestroyAndAddScore();
+        }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        print("Release");
-        DestroyAndAddScore();
-    }
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            print("Hold");
+            isHold = true;
+            pointerPosition = pointer.position;
+            pointer.gameObject.SetActive(true);
+            trail.gameObject.SetActive(true);
 
-    private void DestroyAndAddScore()
-    {
-        isHold = false;
-        var multiplier = AtEndPoint ? 2 : 1;
-        if (AtEndPoint) SpawnEffect(starEffect, pointer);
-        Observer.OnClickTrigger(score * multiplier);
-        Destroy(transform.parent.gameObject);
-    }
+            score = ScoreChecker.ScoreByPosition(transform);
+        }
 
-    private void MovePointer()
-    {
-        pointer.position = pointerPosition;
-    }
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            print("Release");
+            DestroyAndAddScore();
+        }
 
-    private void SpawnEffect(ParticleSystem effect, Transform transform, Transform parent = null)
-    {
-        var pos = transform.position;
-        pos.z = 10;
-        var vfx = Instantiate(effect, pos, Quaternion.identity, parent);
-        vfx.Play();
+        private void DestroyAndAddScore()
+        {
+            isHold = false;
+            var multiplier = AtEndPoint ? 2 : 1;
+            if (AtEndPoint) SpawnEffect(starEffect, pointer);
+            Observer.OnClickTrigger(score * multiplier);
+            Destroy(transform.parent.gameObject);
+        }
+
+        private void MovePointer()
+        {
+            pointer.position = pointerPosition;
+        }
+
+        private void SpawnEffect(ParticleSystem effect, Transform transform, Transform parent = null)
+        {
+            var pos = transform.position;
+            pos.z = 10;
+            var vfx = Instantiate(effect, pos, Quaternion.identity, parent);
+            vfx.Play();
+        }
     }
 }

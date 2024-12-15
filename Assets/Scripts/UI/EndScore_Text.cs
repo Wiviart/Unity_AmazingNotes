@@ -1,29 +1,32 @@
 using System.Collections;
-using UnityEngine;
+using AmazingNotes.Game;
 
-public class EndScore_Text : UI_Text
+namespace AmazingNotes.UI
 {
-    private void OnEnable()
+    public class EndScore_Text : UI_Text
     {
-        var score = GameManager.score.GetScore();
-        ShowText(score, 0);
-    }
-
-    private void ShowText(int value, float time)
-    {
-        StartCoroutine(ShowTextCoroutine(value));
-    }
-
-    private IEnumerator ShowTextCoroutine(int value)
-    {
-        int num = 0;
-        while (num < value)
+        private void OnEnable()
         {
-            num++;
-            text.text = num.ToString("00");
-            yield return null;
+            var score = GameManager.score.GetScore();
+            ShowText(score, 0);
         }
 
-        text.text = value.ToString("00");
+        private void ShowText(int value, float time)
+        {
+            StartCoroutine(ShowTextCoroutine(value));
+        }
+
+        private IEnumerator ShowTextCoroutine(int value)
+        {
+            int num = 0;
+            while (num < value)
+            {
+                num++;
+                text.text = num.ToString("00");
+                yield return null;
+            }
+
+            text.text = value.ToString("00");
+        }
     }
 }

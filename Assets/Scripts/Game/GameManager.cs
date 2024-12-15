@@ -1,62 +1,68 @@
 using System.Collections;
+using AmazingNotes.Audios;
+using AmazingNotes.Notes;
+using AmazingNotes.Scores;
+using AmazingNotes.Spawners;
+using AmazingNotes.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+namespace AmazingNotes.Game
 {
-    [SerializeField] private GameData data;
-    [SerializeField] private Audio _audio;
-    [SerializeField] private SpawnerManager spawner;
-    [SerializeField] private UI_Text scoreUI, comboUI;
-    [SerializeField] private Slider slider;
-    public static Score score;
-
-    private int amount = 1;
-    private int bpm;
-    private float speed;
-    private float delay;
-    private float timer;
-    private float duration;
-
-    private void Start()
+    public class GameManager : MonoBehaviour
     {
-        score = new Score(scoreUI, comboUI);
-        scoreUI.ShowText("00", 0);
-        Observer.OnClick += score.AddScore;
+        [SerializeField] private GameData data;
+        [SerializeField] private Audio _audio;
+        [SerializeField] private SpawnerManager spawner;
+        [SerializeField] private UI_Text scoreUI, comboUI;
+        [SerializeField] private Slider slider;
+        public static Score score;
 
-        bpm = _audio.Init().bpm;
-        duration = _audio.Init().clip.length;
-        delay = (float)60 / bpm;
-        speed = data.StartSpeed;
+        private int amount = 1;
+        private int bpm;
+        private float speed;
+        private float delay;
+        private float timer;
+        private float duration;
 
-        spawner.Init(data, bpm);
-        StartCoroutine(SpawnPerBeat());
-    }
-
-    private void LateUpdate()
-    {
-        timer += Time.deltaTime;
-        slider.value = timer / duration * 100;
-    }
-
-    private void OnDisable()
-    {
-        Observer.OnClick -= score.AddScore;
-    }
-
-    private IEnumerator SpawnPerBeat()
-    {
-        while (true)
+        private void Start()
         {
-            if (timer > duration * 0.95f) break;
+            score = new Score(scoreUI, comboUI);
+            scoreUI.ShowText("00", 0);
+            Observer.OnClick += score.AddScore;
 
-            var type = NoteValue.GetNoteAlongDuration(timer, duration);
-            var randomTile = timer > duration * 0.1f;
+            bpm = _audio.Init().bpm;
+            duration = _audio.Init().clip.length;
+            delay = (float)60 / bpm;
+            speed = data.StartSpeed;
 
-            spawner.SpawnRandom(type, amount, randomTile, speed);
-            yield return new WaitForSeconds(delay);
+            spawner.Init(data, bpm);
+            StartCoroutine(SpawnPerBeat());
+        }
+
+        private void LateUpdate()
+        {
+            timer += Time.deltaTime;
+            slider.value = timer / duration * 100;
+        }
+
+        private void OnDisable()
+        {
+            Observer.OnClick -= score.AddScore;
+        }
+
+        private IEnumerator SpawnPerBeat()
+        {
+            while (true)
+            {
+                if (timer > duration * 0.95f) break;
+
+                var type = NoteValue.GetNoteAlongDuration(timer, duration);
+                var randomTile = timer > duration * 0.1f;
+
+                spawner.SpawnRandom(type, amount, randomTile, speed);
+                yield return new WaitForSeconds(delay);
+            }
         }
     }
 }

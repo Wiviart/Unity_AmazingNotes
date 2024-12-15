@@ -1,18 +1,23 @@
-public class ManualFade : Fade
+using AmazingNotes.Game;
+
+namespace AmazingNotes.Objects
 {
-    private void OnEnable()
+    public class ManualFade : Fade
     {
-        Observer.OnClick += ChangeAlphaOnClick;
-        SetAlpha(originalAlpha);
-    }
+        private void OnEnable()
+        {
+            Observer.OnClick += ChangeAlphaOnClick;
+            SetAlpha(originalAlpha);
+        }
 
-    private void OnDisable()
-    {
-        Observer.OnClick -= ChangeAlphaOnClick;
-    }
+        private void OnDisable()
+        {
+            Observer.OnClick -= ChangeAlphaOnClick;
+        }
 
-    private void ChangeAlphaOnClick(int score)
-    {
-        ChangeAlphaCoroutine();
+        private void ChangeAlphaOnClick(int score)
+        {
+            ChangeAlphaCoroutine();
+        }
     }
 }

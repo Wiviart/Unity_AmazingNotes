@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SoundData", menuName = "Scriptable Objects/Sound Data", order = 1)]
-public class SoundData : ScriptableObject
+namespace AmazingNotes.Audios
 {
-    public List<ClipData> backgroundClips;
+    [CreateAssetMenu(fileName = "SoundData", menuName = "Scriptable Objects/Sound Data", order = 1)]
+    public class SoundData : ScriptableObject
+    {
+        public List<ClipData> backgroundClips;
+    }
 }

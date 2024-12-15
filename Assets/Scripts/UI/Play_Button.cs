@@ -1,9 +1,13 @@
+using AmazingNotes.Game;
 using UnityEngine.SceneManagement;
 
-public class Play_Button : UI_Button
+namespace AmazingNotes.UI
 {
-    protected override void OnClick()
+    public class Play_Button : UI_Button
     {
-        SceneManager.LoadSceneAsync(ConstTag.GameScene);
+        protected override void OnClick()
+        {
+            SceneManager.LoadSceneAsync(ConstTag.GameScene);
+        }
     }
 }
