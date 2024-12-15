@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace AmazingNotes.UI
 {
-    public class Hold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class PointerHold : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private Transform pointer;
         [SerializeField] private Transform endPoint;

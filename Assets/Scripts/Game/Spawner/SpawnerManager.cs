@@ -10,7 +10,8 @@ namespace AmazingNotes.Spawners
     {
         [SerializeField] private Spawner[] spawnPoints;
         private int beatsPerMinute = 0;
-
+        private int index = 0;
+        private int direction = 1;
 
         public void Init(GameData data, int bpm)
         {
@@ -37,6 +38,22 @@ namespace AmazingNotes.Spawners
                 var spawnPoint = points[i];
                 spawnPoint.Spawn(type, beatsPerMinute, random, speed);
             }
+        }
+
+        public void SpawnSpecial(Transform note, float noteSpeed)
+        {
+            foreach (var s in spawnPoints)
+            {
+                if (!s.CanSpawn) return;
+            }
+
+            var spawnPoint = spawnPoints[index];
+            spawnPoint.SpawnSpecial(note, noteSpeed);
+
+            index += direction;
+
+            if (index == 3 || index == 0)
+                direction *= -1;
         }
     }
 }

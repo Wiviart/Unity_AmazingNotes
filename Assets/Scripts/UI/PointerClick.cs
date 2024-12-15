@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace AmazingNotes.UI
 {
-    public class Click : MonoBehaviour, IPointerDownHandler
+    public class PointerClick : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField] private ParticleSystem squareEffect;
         [SerializeField] private ParticleSystem starEffect;

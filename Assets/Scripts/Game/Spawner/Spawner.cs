@@ -9,6 +9,7 @@ namespace AmazingNotes.Spawners
         private GameData data;
         private float delayTime;
         private bool canSpawn = true;
+        public bool CanSpawn => canSpawn;
 
         public void Init(GameData data)
         {
@@ -35,7 +36,6 @@ namespace AmazingNotes.Spawners
             canSpawn = false;
         }
 
-
         private float CalculateDelayTime(NoteType type, int bpm)
         {
             var value = NoteValue.Value(type);
@@ -51,6 +51,12 @@ namespace AmazingNotes.Spawners
 
             var index = Random.Range(0, 2);
             return index == 0 ? data.tilePrefab : data.tileHoldPrefab;
+        }
+
+        public void SpawnSpecial(Transform note, float noteSpeed)
+        {
+            var obj = Instantiate(note, transform);
+            obj.GetComponent<Note>().Init(noteSpeed);
         }
     }
 }

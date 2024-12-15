@@ -17,6 +17,7 @@ namespace AmazingNotes.Game
         [SerializeField] private SpawnerManager spawner;
         [SerializeField] private UI_Text scoreUI, comboUI;
         [SerializeField] private Slider slider;
+        public LifeUI lifeUI;
 
         public Score Score { get; private set; }
 
@@ -28,6 +29,7 @@ namespace AmazingNotes.Game
         private float gameDuration;
 
         private State state = State.Playing;
+        private bool[] specialWaveTriggered = new bool[3];
 
         #region MONOBEHAVIOUR
 
@@ -42,6 +44,7 @@ namespace AmazingNotes.Game
 
             InitializeScore();
             InitializeGameSettings();
+            InitializeLifeUI();
 
             spawner.Init(data, beatsPerMinute);
             StartCoroutine(SpawnPerBeat());
@@ -56,6 +59,10 @@ namespace AmazingNotes.Game
 
             if (HasReachedProgressThreshold(1))
                 Observer.Instance.OnGameEndTrigger();
+
+            CheckAndTriggerSpecialWave(0.25f, 0);
+            CheckAndTriggerSpecialWave(0.50f, 1);
+            CheckAndTriggerSpecialWave(0.75f, 2);
         }
 
         private void OnDisable()
@@ -80,6 +87,11 @@ namespace AmazingNotes.Game
             noteSpeed = data.StartSpeed;
         }
 
+        private void InitializeLifeUI()
+        {
+            lifeUI.Init(data.Lives);
+        }
+
         private void UpdateTime()
         {
             gameTimer += Time.deltaTime;
@@ -92,16 +104,33 @@ namespace AmazingNotes.Game
 
         private IEnumerator SpawnPerBeat()
         {
-            while (true)
+            while (!HasReachedProgressThreshold(0.975f))
             {
-                if (HasReachedProgressThreshold(0.975f)) break;
-
-                var noteType = NoteValue.GetNoteAlongDuration(gameTimer, gameDuration);
-                var isRandomTile = HasReachedProgressThreshold(0.1f);
-
-                spawner.SpawnRandom(noteType, noteAmount, isRandomTile, noteSpeed);
-                yield return new WaitForSeconds(beatDelay);
+                if (state == State.Special)
+                {
+                    SpawnSpecialNotes();
+                    yield return new WaitForSeconds(beatDelay / 2);
+                }
+                else
+                {
+                    SpawnNormalNotes();
+                    yield return new WaitForSeconds(beatDelay);
+                }
             }
+        }
+
+        private void SpawnNormalNotes()
+        {
+            var noteType = NoteValue.GetNoteAlongDuration(gameTimer, gameDuration);
+            var isRandomTile = HasReachedProgressThreshold(0.1f);
+
+            spawner.SpawnRandom(noteType, noteAmount, isRandomTile, noteSpeed);
+        }
+
+        private void SpawnSpecialNotes()
+        {
+            var note = data.specialNotePrefab;
+            spawner.SpawnSpecial(note, noteSpeed);
         }
 
         public bool HasReachedProgressThreshold(float percent)
@@ -113,6 +142,25 @@ namespace AmazingNotes.Game
         {
             StopAllCoroutines();
             state = State.End;
+        }
+
+        private void CheckAndTriggerSpecialWave(float threshold, int index)
+        {
+            if (specialWaveTriggered[index] || !HasReachedProgressThreshold(threshold)) return;
+            specialWaveTriggered[index] = true;
+            SpecialWave();
+        }
+
+        private void SpecialWave()
+        {
+            state = State.Special;
+            StartCoroutine(ReturnToNormal());
+        }
+
+        private IEnumerator ReturnToNormal()
+        {
+            yield return new WaitForSeconds(5);
+            state = State.Playing;
         }
     }
 }

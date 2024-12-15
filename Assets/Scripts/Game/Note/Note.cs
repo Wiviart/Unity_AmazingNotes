@@ -16,6 +16,7 @@ namespace AmazingNotes.Notes
         {
             if (!(transform.position.y < -20)) return;
             GameManager.Instance.Score.ResetCombo();
+            GameManager.Instance.lifeUI.RemoveLife();
             Destroy(gameObject);
         }
 

@@ -7,7 +7,9 @@ namespace AmazingNotes.Game
     {
         public Transform tilePrefab;
         public Transform tileHoldPrefab;
+        public Transform specialNotePrefab;
 
         public float StartSpeed = 6;
+        public int Lives = 3;
     }
 }
