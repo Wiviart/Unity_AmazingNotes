@@ -2,46 +2,33 @@ using System.Collections;
 using AmazingNotes.Game;
 using UnityEngine;
 
-public class SizeChanger : MonoBehaviour
+namespace AmazingNotes.Objects
 {
-    [SerializeField] private AnimationCurve _curve;
-    [SerializeField] private float targetSize = 1.5f;
-    private bool isChanging = false;
-
-    private void Start()
+    public class SizeChanger : AChanger
     {
-        Observer.Instance.OnClick += ChangeSize;
-        Observer.Instance.OnHold += ChangeSize;
-    }
+        [SerializeField] private float startSize = 1f;
+        [SerializeField] private float targetSize = 1.5f;
 
-    private void OnDisable()
-    {
-        Observer.Instance.OnClick -= ChangeSize;
-        Observer.Instance.OnHold -= ChangeSize;
-    }
-
-    private void ChangeSize(int index)
-    {
-        StartCoroutine(ChangeSizeCoroutine());
-    }
-
-    private IEnumerator ChangeSizeCoroutine()
-    {
-        if (isChanging) yield break;
-        isChanging = true;
-
-        float time = 0;
-        var startScale = transform.localScale;
-        var endScale = startScale * targetSize;
-
-        while (time < 1)
+        private void Start()
         {
-            time += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(
-                startScale, endScale, _curve.Evaluate(time));
-            yield return null;
+            Observer.Instance.OnClick += ChangeSize;
+            Observer.Instance.OnHold += ChangeSize;
         }
 
-        isChanging = false;
+        private void OnDisable()
+        {
+            Observer.Instance.OnClick -= ChangeSize;
+            Observer.Instance.OnHold -= ChangeSize;
+        }
+
+        private void ChangeSize(int index)
+        {
+            StartCoroutine(Animate(1f, UpdateScale));
+        }
+
+        private void UpdateScale(float t)
+        {
+            transform.localScale = Vector3.one * Mathf.LerpUnclamped(startSize, targetSize, t);
+        }
     }
 }
