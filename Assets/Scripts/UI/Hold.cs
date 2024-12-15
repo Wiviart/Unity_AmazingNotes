@@ -45,9 +45,16 @@ namespace AmazingNotes.UI
         private void DestroyAndAddScore()
         {
             isHold = false;
-            var multiplier = AtEndPoint ? 2 : 1;
-            if (AtEndPoint) SpawnEffect(starEffect, pointer);
-            Observer.OnClickTrigger(score * multiplier);
+            if (AtEndPoint)
+            {
+                SpawnEffect(starEffect, pointer);
+                Observer.OnHoldTrigger(score * 2);
+            }
+            else
+            {
+                Observer.OnClickTrigger(score);
+            }
+
             Destroy(transform.parent.gameObject);
         }
 

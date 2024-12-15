@@ -13,9 +13,9 @@ namespace AmazingNotes.Game
             OnClick?.Invoke(score);
         }
 
-        public Action<int> OnHold;
+        public static Action<int> OnHold;
 
-        public void OnHoldTrigger(int score)
+        public static void OnHoldTrigger(int score)
         {
             OnHold?.Invoke(score);
         }

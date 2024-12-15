@@ -12,7 +12,6 @@ namespace AmazingNotes.UI
         [SerializeField] private ParticleSystem squareEffect;
         [SerializeField] private ParticleSystem starEffect;
         [SerializeField] private Animator anim;
-        [SerializeField] private Note note;
 
         private bool isClicked = false;
 
@@ -20,9 +19,7 @@ namespace AmazingNotes.UI
         {
             if (isClicked) return;
             isClicked = true;
-
-            note.Stop();
-
+            
             int score = ScoreChecker.ScoreByPosition(transform);
             if (score == 3) SpawnEffect(starEffect);
             Observer.OnClickTrigger(score);

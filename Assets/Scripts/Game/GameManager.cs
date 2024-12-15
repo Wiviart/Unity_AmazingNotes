@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using AmazingNotes.Audios;
 using AmazingNotes.Notes;
@@ -11,12 +12,13 @@ namespace AmazingNotes.Game
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance;
         [SerializeField] private GameData data;
         [SerializeField] private Audio _audio;
         [SerializeField] private SpawnerManager spawner;
         [SerializeField] private UI_Text scoreUI, comboUI;
         [SerializeField] private Slider slider;
-        public static Score score;
+        public Score score;
 
         private int amount = 1;
         private int bpm;
@@ -25,12 +27,16 @@ namespace AmazingNotes.Game
         private float timer;
         private float duration;
 
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void Start()
         {
             score = new Score(scoreUI, comboUI);
             scoreUI.ShowText("00", 0);
-            Observer.OnClick += score.AddScore;
-
+            
             bpm = _audio.Init().bpm;
             duration = _audio.Init().clip.length;
             delay = (float)60 / bpm;
@@ -48,7 +54,7 @@ namespace AmazingNotes.Game
 
         private void OnDisable()
         {
-            Observer.OnClick -= score.AddScore;
+            score.OnDisable();
         }
 
         private IEnumerator SpawnPerBeat()
@@ -63,6 +69,11 @@ namespace AmazingNotes.Game
                 spawner.SpawnRandom(type, amount, randomTile, speed);
                 yield return new WaitForSeconds(delay);
             }
+        }
+
+        public bool GetCurrentProgress(float percent)
+        {
+            return timer > duration * percent;
         }
     }
 }

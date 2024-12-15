@@ -15,9 +15,12 @@ namespace AmazingNotes.Scores
         {
             this.scoreUI = scoreUI;
             this.comboUI = comboUI;
+
+            Observer.OnClick += AddScore;
+            Observer.OnHold += AddScore;
         }
 
-        public void AddScore(int value)
+        private void AddScore(int value)
         {
             if (value > 2) AddCombo();
             else ResetCombo();
@@ -49,6 +52,12 @@ namespace AmazingNotes.Scores
         public int GetScore()
         {
             return score;
+        }
+
+        public void OnDisable()
+        {
+            Observer.OnClick -= AddScore;
+            Observer.OnHold -= AddScore;
         }
     }
 }

@@ -7,12 +7,14 @@ namespace AmazingNotes.Objects
         private void OnEnable()
         {
             Observer.OnClick += ChangeAlphaOnClick;
+            Observer.OnHold += ChangeAlphaOnClick;
             SetAlpha(originalAlpha);
         }
 
         private void OnDisable()
         {
             Observer.OnClick -= ChangeAlphaOnClick;
+            Observer.OnHold -= ChangeAlphaOnClick;
         }
 
         private void ChangeAlphaOnClick(int score)
