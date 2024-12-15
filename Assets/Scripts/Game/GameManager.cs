@@ -27,6 +27,8 @@ namespace AmazingNotes.Game
         private float timer;
         private float duration;
 
+        private State state = State.Playing;
+
         private void Awake()
         {
             Instance = this;
@@ -49,11 +51,13 @@ namespace AmazingNotes.Game
 
         private void Update()
         {
+            if (state == State.End) return;
+
             timer += Time.deltaTime;
             slider.value = timer / duration * 100;
 
-            if (Input.GetKeyDown(KeyCode.A)) Observer.Instance.OnGameEndTrigger();
-            if (GetCurrentProgress(1)) Observer.Instance.OnGameEndTrigger();
+            if (GetCurrentProgress(1)) 
+                Observer.Instance.OnGameEndTrigger();
         }
 
         private void OnDisable()
@@ -65,7 +69,7 @@ namespace AmazingNotes.Game
         {
             while (true)
             {
-                if (GetCurrentProgress(0.95f)) break;
+                if (GetCurrentProgress(0.975f)) break;
 
                 var type = NoteValue.GetNoteAlongDuration(timer, duration);
                 var randomTile = timer > duration * 0.1f;
@@ -83,6 +87,7 @@ namespace AmazingNotes.Game
         private void EndGame()
         {
             StopAllCoroutines();
+            state = State.End;
         }
     }
 }
