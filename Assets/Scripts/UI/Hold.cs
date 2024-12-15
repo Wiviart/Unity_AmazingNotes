@@ -48,11 +48,11 @@ namespace AmazingNotes.UI
             if (AtEndPoint)
             {
                 SpawnEffect(starEffect, pointer);
-                Observer.OnHoldTrigger(score * 2);
+                Observer.Instance.OnHoldTrigger(score * 2);
             }
             else
             {
-                Observer.OnClickTrigger(score);
+                Observer.Instance.OnClickTrigger(score);
             }
 
             Destroy(transform.parent.gameObject);

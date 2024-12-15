@@ -1,15 +1,13 @@
-using System;
 using AmazingNotes.Scores;
-using Unity.VisualScripting;
+using UnityEngine;
 
 public class StarCounter_InGameMenu : StarCounter
 {
-    private void OnEnable()
+    protected override void SetStar(int index)
     {
-        SetStarsByTime(0);
-    }
-
-    private void OnDisable()
-    {
+        for (int i = 0; i <= index; i++)
+        {
+            stars[i].color = Color.white;
+        }
     }
 }

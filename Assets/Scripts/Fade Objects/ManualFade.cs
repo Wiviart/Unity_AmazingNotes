@@ -4,17 +4,17 @@ namespace AmazingNotes.Objects
 {
     public class ManualFade : Fade
     {
-        private void OnEnable()
+        private void Start()
         {
-            Observer.OnClick += ChangeAlphaOnClick;
-            Observer.OnHold += ChangeAlphaOnClick;
+            Observer.Instance.OnClick += ChangeAlphaOnClick;
+            Observer.Instance.OnHold += ChangeAlphaOnClick;
             SetAlpha(originalAlpha);
         }
 
         private void OnDisable()
         {
-            Observer.OnClick -= ChangeAlphaOnClick;
-            Observer.OnHold -= ChangeAlphaOnClick;
+            Observer.Instance.OnClick -= ChangeAlphaOnClick;
+            Observer.Instance.OnHold -= ChangeAlphaOnClick;
         }
 
         private void ChangeAlphaOnClick(int score)

@@ -5,7 +5,7 @@ namespace AmazingNotes.UI
 {
     public abstract class UI_Button : MonoBehaviour
     {
-        private Button button;
+        protected Button button;
 
         private void Awake()
         {

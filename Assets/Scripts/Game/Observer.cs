@@ -1,23 +1,36 @@
 using System;
 using UnityEngine;
 
-
 namespace AmazingNotes.Game
 {
     public class Observer : MonoBehaviour
     {
-        public static Action<int> OnClick;
+        public static Observer Instance;
 
-        public static void OnClickTrigger(int score)
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        public Action<int> OnClick;
+
+        public void OnClickTrigger(int score)
         {
             OnClick?.Invoke(score);
         }
 
-        public static Action<int> OnHold;
+        public Action<int> OnHold;
 
-        public static void OnHoldTrigger(int score)
+        public void OnHoldTrigger(int score)
         {
             OnHold?.Invoke(score);
+        }
+
+        public Action OnGameEnd;
+
+        public void OnGameEndTrigger()
+        {
+            OnGameEnd?.Invoke();
         }
     }
 }

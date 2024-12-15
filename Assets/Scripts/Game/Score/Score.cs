@@ -16,8 +16,8 @@ namespace AmazingNotes.Scores
             this.scoreUI = scoreUI;
             this.comboUI = comboUI;
 
-            Observer.OnClick += AddScore;
-            Observer.OnHold += AddScore;
+            Observer.Instance.OnClick += AddScore;
+            Observer.Instance.OnHold += AddScore;
         }
 
         private void AddScore(int value)
@@ -56,8 +56,8 @@ namespace AmazingNotes.Scores
 
         public void OnDisable()
         {
-            Observer.OnClick -= AddScore;
-            Observer.OnHold -= AddScore;
+            Observer.Instance.OnClick -= AddScore;
+            Observer.Instance.OnHold -= AddScore;
         }
     }
 }

@@ -34,9 +34,10 @@ namespace AmazingNotes.Game
 
         private void Start()
         {
+            Observer.Instance.OnGameEnd += EndGame;
             score = new Score(scoreUI, comboUI);
             scoreUI.ShowText("00", 0);
-            
+
             bpm = _audio.Init().bpm;
             duration = _audio.Init().clip.length;
             delay = (float)60 / bpm;
@@ -46,10 +47,13 @@ namespace AmazingNotes.Game
             StartCoroutine(SpawnPerBeat());
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             timer += Time.deltaTime;
             slider.value = timer / duration * 100;
+
+            if (Input.GetKeyDown(KeyCode.A)) Observer.Instance.OnGameEndTrigger();
+            if (GetCurrentProgress(1)) Observer.Instance.OnGameEndTrigger();
         }
 
         private void OnDisable()
@@ -61,7 +65,7 @@ namespace AmazingNotes.Game
         {
             while (true)
             {
-                if (timer > duration * 0.95f) break;
+                if (GetCurrentProgress(0.95f)) break;
 
                 var type = NoteValue.GetNoteAlongDuration(timer, duration);
                 var randomTile = timer > duration * 0.1f;
@@ -74,6 +78,11 @@ namespace AmazingNotes.Game
         public bool GetCurrentProgress(float percent)
         {
             return timer > duration * percent;
+        }
+
+        private void EndGame()
+        {
+            StopAllCoroutines();
         }
     }
 }

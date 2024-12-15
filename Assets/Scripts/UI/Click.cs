@@ -22,7 +22,7 @@ namespace AmazingNotes.UI
             
             int score = ScoreChecker.ScoreByPosition(transform);
             if (score == 3) SpawnEffect(starEffect);
-            Observer.OnClickTrigger(score);
+            Observer.Instance.OnClickTrigger(score);
 
             SpawnEffect(squareEffect, transform);
             StartCoroutine(PlayAnimationAndDestroy());

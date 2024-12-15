@@ -15,16 +15,16 @@ public class CheerNotification : MonoBehaviour
         image.enabled = false;
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        Observer.OnClick += ShowCheerClick;
-        Observer.OnHold += ShowCheerHold;
+        Observer.Instance.OnClick += ShowCheerClick;
+        Observer.Instance.OnHold += ShowCheerHold;
     }
 
     private void OnDisable()
     {
-        Observer.OnClick -= ShowCheerClick;
-        Observer.OnHold -= ShowCheerHold;
+        Observer.Instance.OnClick -= ShowCheerClick;
+        Observer.Instance.OnHold -= ShowCheerHold;
     }
 
     private void ShowCheerClick(int index)

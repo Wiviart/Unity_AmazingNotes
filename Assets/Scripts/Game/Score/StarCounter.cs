@@ -7,30 +7,23 @@ namespace AmazingNotes.Scores
 {
     public class StarCounter : MonoBehaviour
     {
-        [SerializeField] private Image[] stars;
+        [SerializeField] protected Image[] stars;
 
-        private void OnEnable()
+        private void LateUpdate()
         {
-            Observer.OnClick += SetStarsByTime;
-            Observer.OnHold += SetStarsByTime;
+            SetStarsByTime();
         }
 
-        private void OnDisable()
-        {
-            Observer.OnClick -= SetStarsByTime;
-            Observer.OnHold -= SetStarsByTime;
-        }
-
-        private void SetStar(int index)
-        {
-            stars[index].color = Color.white;
-        }
-
-        protected void SetStarsByTime(int score)
+        protected void SetStarsByTime()
         {
             if (GameManager.Instance.GetCurrentProgress(0.95f)) SetStar(2);
             else if (GameManager.Instance.GetCurrentProgress(0.7f)) SetStar(1);
             else if (GameManager.Instance.GetCurrentProgress(0.35f)) SetStar(0);
+        }
+
+        protected virtual void SetStar(int index)
+        {
+            stars[index].color = Color.white;
         }
     }
 }
