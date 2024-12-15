@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class UI_Text : MonoBehaviour
 {
-    private TextMeshProUGUI text;
-    [SerializeField] private float showTime;
+    protected TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -18,16 +17,16 @@ public class UI_Text : MonoBehaviour
         text.text = "";
     }
 
-    public void ShowText(string value)
+    public void ShowText(string value, float time)
     {
         StopAllCoroutines();
-        StartCoroutine(ShowTextCoroutine(value));
+        StartCoroutine(ShowTextCoroutine(value, time));
     }
 
-    private IEnumerator ShowTextCoroutine(string value)
+    protected IEnumerator ShowTextCoroutine(string value, float time)
     {
         text.text = value;
-        yield return new WaitForSeconds(showTime);
-        if (showTime != 0) text.text = "";
+        yield return new WaitForSeconds(time);
+        if (time != 0) text.text = "";
     }
 }

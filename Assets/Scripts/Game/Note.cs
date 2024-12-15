@@ -13,7 +13,7 @@ public class Note : MonoBehaviour
     private void Update()
     {
         if (!(transform.position.y < -20)) return;
-        GameManager.ResetCombo();
+        GameManager.score.ResetCombo();
         Destroy(gameObject);
     }
 

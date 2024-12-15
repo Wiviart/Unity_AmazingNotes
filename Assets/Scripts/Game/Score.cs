@@ -22,7 +22,7 @@ public class Score
 
         if (score > highScore) highScore = score;
 
-        scoreUI.ShowText(score.ToString("00"));
+        scoreUI.ShowText(score.ToString("00"), 0);
     }
 
     public void ResetScore()
@@ -33,11 +33,16 @@ public class Score
     private void AddCombo()
     {
         if (combo < ConstTag.MaxCombo) combo++;
-        comboUI.ShowText("x" + combo);
+        comboUI.ShowText("x" + combo, 1);
     }
 
     public void ResetCombo()
     {
         combo = 0;
+    }
+    
+    public int GetScore()
+    {
+        return score;
     }
 }

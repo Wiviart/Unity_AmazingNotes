@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpawnerManager spawner;
     [SerializeField] private UI_Text scoreUI, comboUI;
     [SerializeField] private Slider slider;
-    private static Score score;
+    public static Score score;
 
     private int amount = 1;
     private int bpm;
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         score = new Score(scoreUI, comboUI);
-        scoreUI.ShowText("00");
+        scoreUI.ShowText("00", 0);
         Observer.OnClick += score.AddScore;
 
         bpm = _audio.Init().bpm;
@@ -58,11 +58,5 @@ public class GameManager : MonoBehaviour
             spawner.SpawnRandom(type, amount, randomTile, speed);
             yield return new WaitForSeconds(delay);
         }
-    }
-
-
-    public static void ResetCombo()
-    {
-        score.ResetCombo();
     }
 }
