@@ -16,9 +16,9 @@ namespace AmazingNotes.Scores
 
         protected void SetStarsByTime()
         {
-            if (GameManager.Instance.GetCurrentProgress(0.95f)) SetStar(2);
-            else if (GameManager.Instance.GetCurrentProgress(0.7f)) SetStar(1);
-            else if (GameManager.Instance.GetCurrentProgress(0.35f)) SetStar(0);
+            if (GameManager.Instance.HasReachedProgressThreshold(0.95f)) SetStar(2);
+            else if (GameManager.Instance.HasReachedProgressThreshold(0.7f)) SetStar(1);
+            else if (GameManager.Instance.HasReachedProgressThreshold(0.35f)) SetStar(0);
         }
 
         protected virtual void SetStar(int index)

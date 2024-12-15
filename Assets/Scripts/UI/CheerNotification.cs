@@ -30,21 +30,20 @@ public class CheerNotification : MonoBehaviour
     private void ShowCheerClick(int index)
     {
         StopAllCoroutines();
-        StartCoroutine(ShowCheerCoroutine(index));
+        StartCoroutine(ShowCheerCoroutine(index - 1));
     }
 
     private void ShowCheerHold(int score)
     {
         var index = score / 2;
-        StopAllCoroutines();
-        StartCoroutine(ShowCheerCoroutine(index));
+        ShowCheerClick(index);
     }
 
-    private IEnumerator ShowCheerCoroutine(int score)
+    private IEnumerator ShowCheerCoroutine(int index)
     {
-        var cheer = Cheers[score - 1];
+        var sprite = Cheers[index];
+        image.sprite = sprite;
         image.enabled = true;
-        image.sprite = cheer;
         yield return new WaitForSeconds(1f);
         image.enabled = false;
     }

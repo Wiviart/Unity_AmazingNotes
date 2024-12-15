@@ -6,6 +6,6 @@ namespace AmazingNotes.Audios
     public class ClipData : ScriptableObject
     {
         public AudioClip clip;
-        public int bpm;
+        public int beatsPerMinute;
     }
 }

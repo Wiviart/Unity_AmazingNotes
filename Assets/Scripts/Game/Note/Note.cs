@@ -15,7 +15,7 @@ namespace AmazingNotes.Notes
         private void Update()
         {
             if (!(transform.position.y < -20)) return;
-            GameManager.Instance.score.ResetCombo();
+            GameManager.Instance.Score.ResetCombo();
             Destroy(gameObject);
         }
 

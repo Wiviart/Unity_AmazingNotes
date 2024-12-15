@@ -9,12 +9,12 @@ namespace AmazingNotes.Spawners
     public class SpawnerManager : MonoBehaviour
     {
         [SerializeField] private Spawner[] spawnPoints;
-        int bpm = 0;
+        private int beatsPerMinute = 0;
 
 
         public void Init(GameData data, int bpm)
         {
-            this.bpm = bpm;
+            beatsPerMinute = bpm;
 
             foreach (var spawner in spawnPoints)
             {
@@ -35,7 +35,7 @@ namespace AmazingNotes.Spawners
             for (int i = 0; i < amount; i++)
             {
                 var spawnPoint = points[i];
-                spawnPoint.Spawn(type, bpm, random, speed);
+                spawnPoint.Spawn(type, beatsPerMinute, random, speed);
             }
         }
     }

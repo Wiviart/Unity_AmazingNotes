@@ -19,7 +19,7 @@ namespace AmazingNotes.UI
         {
             if (isClicked) return;
             isClicked = true;
-            
+
             int score = ScoreChecker.ScoreByPosition(transform);
             if (score == 3) SpawnEffect(starEffect);
             Observer.Instance.OnClickTrigger(score);
@@ -30,10 +30,10 @@ namespace AmazingNotes.UI
 
         private void SpawnEffect(ParticleSystem effect, Transform parent = null)
         {
-            var pos = transform.position;
+            Vector3 pos = transform.position;
             pos.z = 10;
-            var vfx = Instantiate(effect, pos, Quaternion.identity, parent);
-            vfx.Play();
+            var particle = Instantiate(effect, pos, Quaternion.identity, parent);
+            particle.Play();
         }
 
         private IEnumerator PlayAnimationAndDestroy()

@@ -29,25 +29,23 @@ namespace AmazingNotes.Objects
         private IEnumerator ChangeAlpha()
         {
             var alpha = originalAlpha;
-            var start = originalAlpha;
             var target = 1f;
             var duration = 0.5f;
+            
             var time = 0f;
-
             while (time < duration)
             {
                 time += Time.deltaTime;
-                alpha = Mathf.Lerp(start, target, time / duration);
+                alpha = Mathf.Lerp(originalAlpha, target, time / duration);
                 SetAlpha(alpha);
                 yield return null;
             }
 
             time = 0f;
-
             while (time < duration)
             {
                 time += Time.deltaTime;
-                alpha = Mathf.Lerp(target, start, time / duration);
+                alpha = Mathf.Lerp(target, originalAlpha, time / duration);
                 SetAlpha(alpha);
                 yield return null;
             }

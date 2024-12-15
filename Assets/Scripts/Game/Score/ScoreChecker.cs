@@ -10,11 +10,11 @@ namespace AmazingNotes.Scores
 
             switch (transform.position.y)
             {
-                case > -4f and <= -3.7f:
+                case > -4f and <= -3.5f:
                     Debug.Log("Perfect");
                     score = 3;
                     break;
-                case > -3.7f and <= -3.4f:
+                case > -3.5f and <= -3.0f:
                     Debug.Log("Great");
                     score = 2;
                     break;

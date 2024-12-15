@@ -28,30 +28,26 @@ namespace AmazingNotes.Spawners
         {
             if (!canSpawn || type == NoteType.Rest) return;
 
-            var prefab = PrefabByType(type, random);
+            var prefab = GetPrefabByNoteType(type, random);
             var obj = Instantiate(prefab, transform);
             obj.GetComponent<Note>().Init(speed);
-            delayTime = DelayTime(type, bpm);
+            delayTime = CalculateDelayTime(type, bpm);
             canSpawn = false;
         }
 
 
-        private float DelayTime(NoteType type, int bpm)
+        private float CalculateDelayTime(NoteType type, int bpm)
         {
             var value = NoteValue.Value(type);
             var min = NoteValue.Value(NoteType.Quarter);
             value = Mathf.Max(value, min);
-            var duration = value * 60 / bpm;
-
-            return duration;
+            return value * 60 / bpm;
         }
 
-        private Transform PrefabByType(NoteType type, bool random = true)
+        private Transform GetPrefabByNoteType(NoteType type, bool random = true)
         {
-            if (type != NoteType.Whole)
+            if (type != NoteType.Whole || !random)
                 return data.tilePrefab;
-
-            if (!random) return data.tilePrefab;
 
             var index = Random.Range(0, 2);
             return index == 0 ? data.tilePrefab : data.tileHoldPrefab;

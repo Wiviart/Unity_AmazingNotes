@@ -27,7 +27,6 @@ namespace AmazingNotes.UI
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            print("Hold");
             isHold = true;
             pointerPosition = pointer.position;
             pointer.gameObject.SetActive(true);
@@ -38,7 +37,6 @@ namespace AmazingNotes.UI
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            print("Release");
             DestroyAndAddScore();
         }
 
@@ -65,10 +63,10 @@ namespace AmazingNotes.UI
 
         private void SpawnEffect(ParticleSystem effect, Transform transform, Transform parent = null)
         {
-            var pos = transform.position;
+            Vector3 pos = transform.position;
             pos.z = 10;
-            var vfx = Instantiate(effect, pos, Quaternion.identity, parent);
-            vfx.Play();
+            var particle = Instantiate(effect, pos, Quaternion.identity, parent);
+            particle.Play();
         }
     }
 }

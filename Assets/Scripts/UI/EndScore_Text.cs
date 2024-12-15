@@ -7,7 +7,7 @@ namespace AmazingNotes.UI
     {
         private void OnEnable()
         {
-            var score = GameManager.Instance.score.GetScore();
+            var score = GameManager.Instance.Score.GetScore();
             ShowText(score, 0);
         }
 
