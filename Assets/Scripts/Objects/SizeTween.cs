@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AmazingNotes.Objects
 {
-    public class SizeChanger : AChanger
+    public class SizeTween : ATween
     {
         [SerializeField] private float startSize = 1f;
         [SerializeField] private float targetSize = 1.5f;
@@ -21,7 +21,12 @@ namespace AmazingNotes.Objects
             Observer.Instance.OnHold -= ChangeSize;
         }
 
-        private void ChangeSize(int index)
+        private void ChangeSize(int i)
+        {
+            StartChange();
+        }
+
+        protected override void StartChange()
         {
             StartCoroutine(Animate(1f, UpdateScale));
         }

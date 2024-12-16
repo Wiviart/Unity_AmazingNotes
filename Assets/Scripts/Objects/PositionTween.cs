@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace AmazingNotes.Objects
 {
-    public class PositionChanger : AChanger
+    public class PositionTween : ATween
     {
         [SerializeField] private Vector3 startPos = Vector3.zero;
         [SerializeField] private Vector3 targetPos = Vector3.zero;
 
         private void Start()
         {
-            ChangePosition();
+            StartChange();
         }
 
-        private void ChangePosition()
+        protected override void StartChange()
         {
             StartCoroutine(Animate(1f, UpdatePosition));
         }

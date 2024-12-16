@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace AmazingNotes.Objects
 {
-    public abstract class AChanger : MonoBehaviour
+    public abstract class ATween : MonoBehaviour
     {
         [SerializeField] protected AnimationCurve curve;
         private bool isChanging = false;
+
+        protected abstract void StartChange();
 
         protected IEnumerator Animate(float duration, Action<float> onUpdate, Action onComplete = null)
         {

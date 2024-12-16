@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 namespace AmazingNotes.Objects
 {
-    public class SizeChanger_Auto : AChanger
+    public class SizeTweenAuto : ATween
     {
         [SerializeField] private float startSize = 1f;
         [SerializeField] private float targetSize = 1.5f;
@@ -11,10 +10,10 @@ namespace AmazingNotes.Objects
 
         private void Start()
         {
-            ChangeSize();
+            StartChange();
         }
 
-        private void ChangeSize()
+        protected override void StartChange()
         {
             StartCoroutine(Animate(1f, UpdateScale, RestartIfLoop));
         }
@@ -26,7 +25,7 @@ namespace AmazingNotes.Objects
 
         private void RestartIfLoop()
         {
-            if (loop) ChangeSize();
+            if (loop) StartChange();
         }
     }
 }
