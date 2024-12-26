@@ -3,15 +3,8 @@ using UnityEngine;
 
 namespace AmazingNotes.Game
 {
-    public class Observer : MonoBehaviour
+    public class Observer : Singleton<Observer>
     {
-        public static Observer Instance;
-
-        private void Awake()
-        {
-            Instance = this;
-        }
-
         public Action<int> OnClick;
 
         public void OnClickTrigger(int score)

@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705272deeded3cb4088a059e08a70d4c, type: 3}
   m_Name: APT
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: f9ba7085ea7ac9a4a90da1f562b3836d, type: 3}
+  clipRef:
+    m_AssetGUID: f9ba7085ea7ac9a4a90da1f562b3836d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  clip: {fileID: 0}
   beatsPerMinute: 149

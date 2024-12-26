@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705272deeded3cb4088a059e08a70d4c, type: 3}
-  m_Name: Leat'eq
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Default Local Group_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  clipRef:
-    m_AssetGUID: 8252dcded45662c42bdc6541a99d5591
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  clip: {fileID: 0}
-  beatsPerMinute: 102
+  m_Group: {fileID: 11400000, guid: 49056ecc84d76c64eb89e417af5b5921, type: 2}
+  m_StaticContent: 0

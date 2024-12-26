@@ -9,9 +9,8 @@ using UnityEngine.UI;
 
 namespace AmazingNotes.Game
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : Singleton<GameManager>
     {
-        public static GameManager Instance;
         [SerializeField] private GameData data;
         [SerializeField] private Audio audioManager;
         [SerializeField] private SpawnerManager spawner;
@@ -26,17 +25,12 @@ namespace AmazingNotes.Game
         private float noteSpeed;
         private float beatDelay;
         private float gameTimer;
-        private float gameDuration;
+        private float gameDuration = 1000;
 
         private State state = State.Playing;
         private bool[] specialWaveTriggered = new bool[3];
 
         #region MONOBEHAVIOUR
-
-        private void Awake()
-        {
-            Instance = this;
-        }
 
         private void Start()
         {

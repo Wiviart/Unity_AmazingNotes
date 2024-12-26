@@ -1,6 +1,7 @@
 using System;
 using AmazingNotes.Game;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 namespace AmazingNotes.Audios
@@ -36,11 +37,13 @@ namespace AmazingNotes.Audios
 
         public ClipData Init()
         {
-            int random = Random.Range(0, data.backgroundClips.Count);
-            _source.clip = data.backgroundClips[random].clip;
+            var clips = AssetLoader.Instance.clipDatas;
+            var index = Random.Range(0, clips.Length);
+            var clipData = clips[index];
+            _source.clip = clipData.clip;
             _source.Play();
 
-            return data.backgroundClips[random];
+            return clipData;
         }
     }
 }

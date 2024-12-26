@@ -9,13 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705272deeded3cb4088a059e08a70d4c, type: 3}
-  m_Name: Leat'eq
+  m_Script: {fileID: 11500000, guid: 3a189bb168d8d90478a09ea08c2f3d72, type: 3}
+  m_Name: DefaultObject
   m_EditorClassIdentifier: 
-  clipRef:
-    m_AssetGUID: 8252dcded45662c42bdc6541a99d5591
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  clip: {fileID: 0}
-  beatsPerMinute: 102
+  m_AddressableAssetSettingsGuid: 838d80042f7472247866766ef2282dcb

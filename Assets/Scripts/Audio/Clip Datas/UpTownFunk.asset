@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705272deeded3cb4088a059e08a70d4c, type: 3}
   m_Name: UpTownFunk
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: afd77a2bf5d528a4188570f88869f5fd, type: 3}
+  clipRef:
+    m_AssetGUID: afd77a2bf5d528a4188570f88869f5fd
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  clip: {fileID: 0}
   beatsPerMinute: 115

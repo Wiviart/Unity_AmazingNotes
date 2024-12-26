@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 75d982b116c42854197713e407373f90, type: 3}
   beatsPerMinute: 172
+  clipRef:
+    m_AssetGUID: 75d982b116c42854197713e407373f90
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
