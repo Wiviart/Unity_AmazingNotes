@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using AmazingNotes.Audios;
 using AmazingNotes.Notes;
@@ -9,8 +10,10 @@ using UnityEngine.UI;
 
 namespace AmazingNotes.Game
 {
-    public class GameManager : Singleton<GameManager>
+    public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance;
+        
         [SerializeField] private GameData data;
         [SerializeField] private Audio audioManager;
         [SerializeField] private SpawnerManager spawner;
@@ -31,6 +34,11 @@ namespace AmazingNotes.Game
         private bool[] specialWaveTriggered = new bool[3];
 
         #region MONOBEHAVIOUR
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {

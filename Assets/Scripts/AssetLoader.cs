@@ -19,7 +19,6 @@ public class AssetLoader : Singleton<AssetLoader>
                     clipData.clip = handle.Result;
                     print("Loaded");
                 };
-            Addressables.Release(clipData.clipRef);
         }
 
         Debug.Log("Finish loading assets");

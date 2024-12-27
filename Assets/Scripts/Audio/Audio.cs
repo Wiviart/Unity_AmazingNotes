@@ -1,7 +1,6 @@
 using System;
 using AmazingNotes.Game;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 namespace AmazingNotes.Audios

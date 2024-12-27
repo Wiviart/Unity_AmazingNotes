@@ -16,26 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: e3d8c59055862874ca8be951287519df
-  m_SerializeEntries:
-  - m_GUID: 8252dcded45662c42bdc6541a99d5591
-    m_Address: Assets/Audio/Tokyo-Leateq-6945306.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f9ba7085ea7ac9a4a90da1f562b3836d
-    m_Address: "Assets/Audio/ROS\xC9 & Bruno Mars - APT. (Official Music Video) (320
-      kbps).mp3"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: afd77a2bf5d528a4188570f88869f5fd
-    m_Address: Assets/Audio/Mark Ronson - Uptown Funk (Official Video) ft. Bruno
-      Mars (320 kbps).mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 75d982b116c42854197713e407373f90
-    m_Address: Assets/Audio/2 Chainz & Wiz Khalifa - We Own It (Fast & Furious -
-      Official Lyric Video) (320 kbps).mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 838d80042f7472247866766ef2282dcb, type: 2}
   m_SchemaSet:
