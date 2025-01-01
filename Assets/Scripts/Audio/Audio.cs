@@ -1,13 +1,15 @@
 using System;
+using System.Threading.Tasks;
 using AmazingNotes.Game;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 namespace AmazingNotes.Audios
 {
     public class Audio : MonoBehaviour
     {
-        [SerializeField] private SoundData data;
+        [SerializeField] private AssetReference dataRef;
         [SerializeField] private AudioClip endClip;
 
         private AudioSource _source;
@@ -34,12 +36,15 @@ namespace AmazingNotes.Audios
             _source.Play();
         }
 
-        public ClipData Init()
+        public async Task<ClipData> Init()
         {
-            var clips = AssetLoader.Instance.clipDatas;
-            var index = Random.Range(0, clips.Length);
-            var clipData = clips[index];
-            _source.clip = clipData.clip;
+            var data = await AssetLoader<SoundData>.LoadAsset(dataRef);
+            var clips = data.backgroundClips;
+            var index = Random.Range(0, clips.Count);
+            var clipDataRef = clips[index];
+            var clipData = await AssetLoader<ClipData>.LoadAsset(clipDataRef);
+            var clip = await AssetLoader<AudioClip>.LoadAsset(clipData.clipRef);
+            clipData.clip = _source.clip = clip;
             _source.Play();
 
             return clipData;

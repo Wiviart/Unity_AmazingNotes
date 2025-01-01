@@ -13,7 +13,19 @@ MonoBehaviour:
   m_Name: SoundData
   m_EditorClassIdentifier: 
   backgroundClips:
-  - {fileID: 11400000, guid: a76aef59836c0c747a0b9693cb6fc7ad, type: 2}
-  - {fileID: 11400000, guid: c0668e4aa7efd8545a976861017a48b1, type: 2}
-  - {fileID: 11400000, guid: daef921dcb355294c80f5b20155ad852, type: 2}
-  - {fileID: 11400000, guid: 82b41112831ff4a45ba4b93a30b2ad86, type: 2}
+  - m_AssetGUID: c0668e4aa7efd8545a976861017a48b1
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 82b41112831ff4a45ba4b93a30b2ad86
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: a76aef59836c0c747a0b9693cb6fc7ad
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: daef921dcb355294c80f5b20155ad852
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

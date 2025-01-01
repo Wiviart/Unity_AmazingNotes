@@ -43,7 +43,12 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 7d2ede091d2db664b879186de387cb17, type: 2}
   - {fileID: 11400000, guid: 49056ecc84d76c64eb89e417af5b5921, type: 2}
+  - {fileID: 11400000, guid: dd1299d96f94b5a4aaa561821751f0b7, type: 2}
   - {fileID: 11400000, guid: d99525c4cc66892488e0b8313abc628f, type: 2}
+  - {fileID: 11400000, guid: 01a1c2f0a4418ed4d896a9d858dcdded, type: 2}
+  - {fileID: 11400000, guid: 187fbefa118b5a64e82b03a9d14dc88e, type: 2}
+  - {fileID: 11400000, guid: 88b98621550e66244bca21707c478912, type: 2}
+  - {fileID: 11400000, guid: c6af9e4c5effc944eb60346df46e3d5c, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -62,9 +67,9 @@ MonoBehaviour:
       - m_Id: 9296cbfefa922244a8f170813ffeb3b1
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 457f50f5120f57745a79af1db0fb6367
-        m_Value: ServerData/
+        m_Value: D:\Github_Repositories\UNITY_Addressables_Asset\AmazingNotes\[BuildTarget]
       - m_Id: 9d41b1af2fefdc348b474a5c7901c8c5
-        m_Value: https://storage.googleapis.com/amazing_notes/
+        m_Value: https://wiviart.github.io/UNITY_Addressables_Asset/AmazingNotes/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 142aba5525fdf554ebd8c1fdd89a2f92
       m_Name: BuildTarget

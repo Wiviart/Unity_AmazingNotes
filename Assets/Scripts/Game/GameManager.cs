@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using AmazingNotes.Audios;
 using AmazingNotes.Notes;
 using AmazingNotes.Scores;
@@ -13,12 +14,13 @@ namespace AmazingNotes.Game
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        
+
         [SerializeField] private GameData data;
         [SerializeField] private Audio audioManager;
         [SerializeField] private SpawnerManager spawner;
         [SerializeField] private UI_Text scoreUI, comboUI;
         [SerializeField] private Slider slider;
+        [SerializeField] private GameObject loadingScreen;
         public LifeUI lifeUI;
 
         public Score Score { get; private set; }
@@ -30,7 +32,7 @@ namespace AmazingNotes.Game
         private float gameTimer;
         private float gameDuration = 1000;
 
-        private State state = State.Playing;
+        private State state = State.Init;
         private bool[] specialWaveTriggered = new bool[3];
 
         #region MONOBEHAVIOUR
@@ -40,21 +42,19 @@ namespace AmazingNotes.Game
             Instance = this;
         }
 
-        private void Start()
+        private async void Start()
         {
-            Observer.Instance.OnGameEnd += OnGameEnd;
-
+            await InitializeGameSettings();
+            state = State.Playing;
             InitializeScore();
-            InitializeGameSettings();
             InitializeLifeUI();
-
             spawner.Init(data, beatsPerMinute);
             StartCoroutine(SpawnPerBeat());
         }
 
         private void Update()
         {
-            if (state == State.End) return;
+            if (!IsPlaying()) return;
 
             UpdateTime();
             UpdateSlider();
@@ -67,9 +67,15 @@ namespace AmazingNotes.Game
             CheckAndTriggerSpecialWave(0.75f, 2);
         }
 
+        private void OnEnable()
+        {
+            Observer.Instance.OnGameEnd += OnGameEnd;
+        }
+
         private void OnDisable()
         {
             Score.OnDisable();
+            Observer.Instance.OnGameEnd -= OnGameEnd;
         }
 
         #endregion
@@ -80,13 +86,15 @@ namespace AmazingNotes.Game
             scoreUI.ShowText("00", 0);
         }
 
-        private void InitializeGameSettings()
+        private async Task InitializeGameSettings()
         {
-            var clipData = audioManager.Init();
+            loadingScreen.SetActive(true);
+            var clipData = await audioManager.Init();
             beatsPerMinute = clipData.beatsPerMinute;
             gameDuration = clipData.clip.length;
             beatDelay = 60f / beatsPerMinute;
             noteSpeed = data.StartSpeed;
+            loadingScreen.SetActive(false);
         }
 
         private void InitializeLifeUI()
@@ -148,21 +156,28 @@ namespace AmazingNotes.Game
 
         private void CheckAndTriggerSpecialWave(float threshold, int index)
         {
-            if (specialWaveTriggered[index] || !HasReachedProgressThreshold(threshold)) return;
+            if (specialWaveTriggered[index] ||
+                !HasReachedProgressThreshold(threshold))
+                return;
             specialWaveTriggered[index] = true;
             SpecialWave();
         }
 
         private void SpecialWave()
         {
-            state = State.Special;
             StartCoroutine(ReturnToNormal());
         }
 
         private IEnumerator ReturnToNormal()
         {
-            yield return new WaitForSeconds(5);
+            state = State.Special;
+            yield return new WaitForSeconds(10);
             state = State.Playing;
+        }
+
+        private bool IsPlaying()
+        {
+            return state is State.Playing or State.Special;
         }
     }
 }

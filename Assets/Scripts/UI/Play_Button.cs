@@ -1,13 +1,16 @@
 using AmazingNotes.Game;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 namespace AmazingNotes.UI
 {
     public class Play_Button : UI_Button
     {
+        [SerializeField] private AssetReference sceneRef;
         protected override void OnClick()
         {
-            SceneManager.LoadSceneAsync(ConstTag.GameScene);
+            AssetLoader<Scene>.LoadScene(sceneRef);
         }
     }
 }

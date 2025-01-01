@@ -1,26 +1,28 @@
+using System.Threading.Tasks;
 using AmazingNotes.Audios;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class AssetLoader : Singleton<AssetLoader>
+public abstract class AssetLoader<T>
 {
-    [SerializeField] private SoundData soundData;
-    internal ClipData[] clipDatas;
-
-    private void Start()
+    public static async Task<T> LoadAsset(AssetReference astRef)
     {
-        Debug.Log("Start loading assets");
-        clipDatas = soundData.backgroundClips.ToArray();
-        foreach (var clipData in clipDatas)
+        var handle = Addressables.LoadAssetAsync<T>(astRef);
+        await handle.Task;
+
+        if (handle.Status == AsyncOperationStatus.Failed)
         {
-            Addressables.LoadAssetAsync<AudioClip>(clipData.clipRef).Completed +=
-                handle =>
-                {
-                    clipData.clip = handle.Result;
-                    print("Loaded");
-                };
+            Debug.LogError("Failed to load asset");
+            return default;
         }
 
-        Debug.Log("Finish loading assets");
+        Debug.Log("Loaded");
+        return handle.Result;
+    }
+
+    public static void LoadScene(AssetReference astRef)
+    {
+        Addressables.LoadSceneAsync(astRef);
     }
 }

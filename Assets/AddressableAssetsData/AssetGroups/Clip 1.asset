@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Clip 1
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Clip 1
   m_Data:
     m_SerializedData: []
-  m_GUID: 18a8652e732866741888c841028716fe
-  m_SerializeEntries: []
+  m_GUID: e3d8c59055862874ca8be951287519df
+  m_SerializeEntries:
+  - m_GUID: 8252dcded45662c42bdc6541a99d5591
+    m_Address: Assets/Audio/Tokyo-Leateq-6945306.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 838d80042f7472247866766ef2282dcb, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 5f1a038d73b40294a991e3915322ffa2, type: 2}
-    - {fileID: 11400000, guid: 7e3e7313fb04f2e48a6b707848ef9ca8, type: 2}
+    - {fileID: 11400000, guid: 7343eed2889cf404b98254db92048adf, type: 2}
+    - {fileID: 11400000, guid: b289ec22d353d3f4fa1488e9ce2987c7, type: 2}
