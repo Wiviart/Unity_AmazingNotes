@@ -24,9 +24,11 @@
     <type fullname="AmazingNotes.UI.PointerHold" preserve="all" />
     <type fullname="AmazingNotes.UI.UI_Text" preserve="all" />
     <type fullname="CheerNotification" preserve="all" />
+    <type fullname="ConsoleToGUI" preserve="all" />
     <type fullname="LifeUI" preserve="all" />
     <type fullname="PointerEnter" preserve="all" />
     <type fullname="StarCounter_InGameMenu" preserve="all" />
+    <type fullname="StatusText" preserve="all" />
   </assembly>
   <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Prefabs
+  m_EditorClassIdentifier: 
+  m_GroupName: Prefabs
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 97c0dc66df70ddb4bb8ceb32d569769b
+  m_SerializeEntries:
+  - m_GUID: e28d7418795015e4893e41e1cdd8c738
+    m_Address: Assets/Prefabs/Life.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a72c0b7292bd794a81965eba3c5b19a
+    m_Address: Assets/Prefabs/Tile Quarter.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3b5a164518b12544cb816e37765a13c0
+    m_Address: Assets/Prefabs/Tile Whole.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7c9d8a743143f8f4086241cf35f69f28
+    m_Address: Assets/Prefabs/Special Tile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a02c12adbc91f3d408acec1edba79842
+    m_Address: Assets/Prefabs/Status Text.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 778960cccd2d36742a4c63b12026b9a9
+    m_Address: Assets/Prefabs/Logger.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 838d80042f7472247866766ef2282dcb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 3fdb87c7cf4e7ef4d8589231bad01d49, type: 2}
+    - {fileID: 11400000, guid: ba31482155fbdb9418afd5f9fc488758, type: 2}

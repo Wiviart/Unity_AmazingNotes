@@ -10,6 +10,8 @@ public abstract class AssetLoader<T>
     {
         var handle = Addressables.LoadAssetAsync<T>(astRef);
 
+        ShowProgress(handle);
+
         await handle.Task;
 
         if (handle.Status == AsyncOperationStatus.Failed)
@@ -24,12 +26,27 @@ public abstract class AssetLoader<T>
 
     public static void LoadScene(AssetReference astRef)
     {
-        Addressables.LoadSceneAsync(astRef).Completed += handle =>
+        var handle = Addressables.LoadSceneAsync(astRef);
+        ShowProgress(handle);
+        handle.Completed += handle =>
         {
             if (handle.Status == AsyncOperationStatus.Failed)
                 Debug.LogError("Failed to load scene");
             else
                 Debug.Log("Scene " + handle.Result + " Loaded");
         };
+    }
+
+    private static async void ShowProgress(AsyncOperationHandle handle)
+    {
+        while (true)
+        {
+            var text = handle.PercentComplete * 100;
+            StatusText.SetText("Loading... " + text.ToString("F2") + "%");
+            await Task.Delay(100);
+
+            if (handle.Status != AsyncOperationStatus.None)
+                break;
+        }
     }
 }

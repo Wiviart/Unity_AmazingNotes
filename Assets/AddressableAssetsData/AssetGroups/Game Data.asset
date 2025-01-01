@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Clip 1
+  m_Name: Game Data
   m_EditorClassIdentifier: 
-  m_GroupName: Clip 1
+  m_GroupName: Game Data
   m_Data:
     m_SerializedData: []
-  m_GUID: e3d8c59055862874ca8be951287519df
+  m_GUID: 40500b2c1e501124c8230bfe64a8e85c
   m_SerializeEntries:
-  - m_GUID: 8252dcded45662c42bdc6541a99d5591
-    m_Address: Assets/Audio/Tokyo-Leateq-6945306.mp3
+  - m_GUID: b7fb5962b9e51bb4b8ef116d8abb4067
+    m_Address: Assets/Scripts/Game/GameData.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 838d80042f7472247866766ef2282dcb, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 7343eed2889cf404b98254db92048adf, type: 2}
-    - {fileID: 11400000, guid: b289ec22d353d3f4fa1488e9ce2987c7, type: 2}
+    - {fileID: 11400000, guid: b0fcbf6a93324d34f9f77d86e87ec804, type: 2}
+    - {fileID: 11400000, guid: 52bcef5d4e12a8e45bb04e1b76462a84, type: 2}
