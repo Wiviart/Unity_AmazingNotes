@@ -22,6 +22,10 @@ MonoBehaviour:
       Official Lyric Video) (320 kbps).mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 82b41112831ff4a45ba4b93a30b2ad86
+    m_Address: Assets/Scripts/Audio/Clip Datas/WeOwnIt.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 838d80042f7472247866766ef2282dcb, type: 2}
   m_SchemaSet:

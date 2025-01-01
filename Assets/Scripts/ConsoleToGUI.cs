@@ -35,6 +35,14 @@ public class ConsoleToGUI : MonoBehaviour
         Application.logMessageReceived -= Log;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            doShow = !doShow;
+        }
+    }
+
     private void Log(string logString, string stackTrace, LogType type)
     {
         // Time in minutes and seconds

@@ -24,7 +24,6 @@
     <type fullname="AmazingNotes.UI.PointerHold" preserve="all" />
     <type fullname="AmazingNotes.UI.UI_Text" preserve="all" />
     <type fullname="CheerNotification" preserve="all" />
-    <type fullname="ConsoleToGUI" preserve="all" />
     <type fullname="LifeUI" preserve="all" />
     <type fullname="PointerEnter" preserve="all" />
     <type fullname="StarCounter_InGameMenu" preserve="all" />
@@ -119,8 +118,8 @@
     <type fullname="UnityEngine.UI.ColorBlock" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.UI.MaskableGraphic/CullStateChangedEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.UI.Navigation" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.UI.Slider/SliderEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.UI.SpriteState" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Slider/SliderEvent" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Canvas" preserve="all" />

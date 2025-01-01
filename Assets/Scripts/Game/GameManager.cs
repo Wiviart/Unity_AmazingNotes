@@ -45,6 +45,7 @@ namespace AmazingNotes.Game
         private async void Start()
         {
             await InitializeGameSettings();
+            loadingScreen.SetActive(false);
             state = State.Playing;
             InitializeScore();
             InitializeLifeUI();
@@ -88,13 +89,11 @@ namespace AmazingNotes.Game
 
         private async Task InitializeGameSettings()
         {
-            loadingScreen.SetActive(true);
             var clipData = await audioManager.Init();
             beatsPerMinute = clipData.beatsPerMinute;
             gameDuration = clipData.clip.length;
             beatDelay = 60f / beatsPerMinute;
             noteSpeed = data.StartSpeed;
-            loadingScreen.SetActive(false);
         }
 
         private void InitializeLifeUI()

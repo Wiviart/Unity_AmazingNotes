@@ -17,22 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c79d59f7a2003214c84733c81e346f05
   m_SerializeEntries:
-  - m_GUID: daef921dcb355294c80f5b20155ad852
-    m_Address: Assets/Scripts/Audio/Clip Datas/UpTownFunk.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a76aef59836c0c747a0b9693cb6fc7ad
-    m_Address: Assets/Scripts/Audio/Clip Datas/APT.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 82b41112831ff4a45ba4b93a30b2ad86
-    m_Address: Assets/Scripts/Audio/Clip Datas/WeOwnIt.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c0668e4aa7efd8545a976861017a48b1
-    m_Address: Assets/Scripts/Audio/Clip Datas/Leat'eq.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 82fb903204dba4f40a251b43a833ba88
     m_Address: Assets/Scripts/Audio/SoundData.asset
     m_ReadOnly: 0
