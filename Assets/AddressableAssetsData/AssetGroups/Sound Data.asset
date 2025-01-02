@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: Assets/Scripts/Audio/Clip Datas/WeOwnIt.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 3d1b7fb65084bd04da2499aa12a003a0
+    m_Address: Assets/Scripts/Audio/Clip Datas/Down.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 838d80042f7472247866766ef2282dcb, type: 2}
   m_SchemaSet:
